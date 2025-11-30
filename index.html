@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Películas OMDb de Pablo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 id="header-title">Buscador OMDb de Pablo</h1>
+    </header>
+
+    <main id="app-container">
+        <section id="landing-page" class="view hidden">
+            
+        </section>
+
+        <section id="results-view" class="view hidden">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Escribe el título de la película o serie..." required>
+                <button type="submit">Buscar</button>
+            </form>
+            
+            <h2 id="results-title">Resultados recientes:</h2>
+            <div id="results-list" class="movie-grid">
+                </div>
+            
+            <div id="pagination-container" class="hidden">
+                <button id="load-more-btn">Ver más</button>
+            </div>
+        </section>
+
+        <section id="detail-view" class="view hidden">
+            <button id="back-to-list-btn">← Volver al Listado</button>
+            <div id="movie-detail">
+                </div>
+        </section>
+        
+        <div id="message-container" class="hidden"></div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

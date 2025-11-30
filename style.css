@@ -1,0 +1,277 @@
+/* Paleta de colores Netflix-like:
+   - Fondo principal: #141414 (Negro muy oscuro)
+   - Fondo de contenedores/cards: #1E1E1E (Gris oscuro sutil)
+   - Acento (Vibrante): #E50914 (Rojo Netflix)
+   - Texto principal: #F5F5F5 (Blanco suave)
+*/
+
+body {
+    /* Fuente moderna y legible */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #141414; /* Negro profundo */
+    color: #F5F5F5;
+    line-height: 1.6;
+}
+
+/* --- Encabezado --- */
+.header {
+    background-color: #141414;
+    color: #E50914; /* Rojo Netflix en el título */
+    padding: 30px 40px; 
+    text-align: left; /* Título alineado a la izquierda como en Netflix */
+    box-shadow: none; /* Diseño más plano y limpio, sin sombras fuertes */
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+.header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+#app-container {
+    max-width: 1400px; 
+    margin: 20px auto;
+    padding: 0 40px; /* Más padding lateral */
+}
+
+/* --- Vistas y Contenedores --- */
+.view {
+    padding: 25px 0; /* Padding vertical en la vista */
+    background: transparent; /* Fondo transparente, dejando ver el body */
+    border-radius: 0; 
+    box-shadow: none;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Títulos de Sección --- */
+h2 {
+    color: #F5F5F5;
+    font-size: 1.8em; 
+    font-weight: 600;
+    border-bottom: none; 
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 0; /* Asegurar que el título no tiene sangría */
+}
+
+/* --- Formulario de Búsqueda (Buscador limpio y minimalista) --- */
+#search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #444; /* Borde sutil */
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #1E1E1E; /* Input gris oscuro */
+    color: #F5F5F5;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #E50914; /* Acento rojo al enfocar */
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
+    outline: none;
+}
+
+#search-form button {
+    padding: 12px 25px;
+    background-color: #E50914; /* Botón rojo vibrante */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#search-form button:hover {
+    background-color: #B20710; /* Rojo más oscuro al pasar el ratón */
+}
+
+/* --- Grid de Resultados (Tarjetas de Películas) --- */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Más columnas, menos espacio */
+    gap: 15px; /* Menos espacio entre tarjetas para un aspecto denso */
+    margin-top: 20px;
+}
+
+.movie-item {
+    cursor: pointer;
+    border: 3px solid transparent; 
+    border-radius: 4px; /* Menos redondeado */
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    background: #1E1E1E;
+    text-align: center;
+    padding-bottom: 0; /* Quitamos padding inferior para que el texto toque el borde */
+    box-shadow: none; /* Quitamos la sombra de las tarjetas en estado normal */
+}
+
+.movie-item:hover {
+    transform: scale(1.08); /* Zoom sutil pero efectivo */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); /* Sombra al hacer hover */
+    border-color: #E50914; /* Borde rojo al hacer hover */
+    z-index: 10; 
+}
+
+.movie-item img {
+    width: 100%;
+    height: 300px; /* Tamaño clásico de póster */
+    object-fit: cover;
+    display: block;
+    border-radius: 4px 4px 0 0; 
+}
+
+.movie-item h4 {
+    margin: 10px 0 3px;
+    padding: 0 5px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #F5F5F5;
+}
+
+.movie-item p {
+    margin: 0 0 10px 0;
+    font-size: 0.8em;
+    color: #AAA; 
+}
+
+/* --- Botón "Ver más" (Carga infinita) --- */
+#pagination-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#load-more-btn {
+    padding: 12px 30px; 
+    background-color: #444; /* Botón más discreto que el acento */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#load-more-btn:hover {
+    background-color: #E50914; /* ¡Rojo de acento al hacer hover! */
+}
+
+/* --- Vista de Detalle --- */
+#back-to-list-btn {
+    padding: 10px 18px;
+    background-color: #1E1E1E; 
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background-color 0.3s;
+}
+
+#back-to-list-btn:hover {
+    background-color: #E50914;
+    border-color: #E50914;
+}
+
+#movie-detail {
+    display: flex;
+    gap: 50px; 
+    align-items: flex-start;
+}
+
+#movie-detail .poster {
+    flex-shrink: 0;
+    max-width: 300px; /* Un poco más pequeño que el estilo HBO */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+#movie-detail .poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.detail-info {
+    flex-grow: 1;
+}
+
+.detail-info h2 {
+    font-size: 2.5em; 
+    font-weight: 700;
+    color: #F5F5F5; 
+    margin-bottom: 20px;
+}
+
+.detail-info p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #CCC;
+    margin-bottom: 12px;
+}
+
+.detail-info p strong {
+    font-weight: bold;
+    color: #E50914; /* Etiquetas en rojo */
+    display: inline-block; 
+    min-width: 120px; 
+}
+
+/* --- Mensajes de Error/Info --- */
+.error-msg {
+    background-color: #3f0f12; 
+    color: #FF7F7F; 
+    border: 1px solid #721c24;
+}
+.info-msg {
+    background-color: #1E1E1E; 
+    color: #CCC; 
+    border: 1px solid #444;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    #app-container {
+        padding: 0 15px;
+    }
+    .header {
+        padding: 20px 15px;
+        text-align: center;
+    }
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    .movie-item img {
+        height: 180px;
+    }
+    #movie-detail {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #movie-detail .poster {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    .detail-info h2 {
+        font-size: 2em;
+    }
+}
