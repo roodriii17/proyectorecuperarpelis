@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
     
     // Si no hay póster, usamos un placeholder.
-    const DEFAULT_POSTER = 'https://via.placeholder.com/300x450?text=Póster+No+Disponible';
+    const DEFAULT_POSTER = 'https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vectorial-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg';
 
     // variable globales
     let currentSearchTerm = '';
